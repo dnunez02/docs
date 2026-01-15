@@ -10,15 +10,15 @@ In brief, the following occurs when the autograder is invoked
 
 1. The system checks for all the files under the `submissionFiles` section. If any of those files are missing, the autograder aborts and reports those files are missing in the Grading Summary.
 2. The autograder runs according to the `build` configuration. If the run fails, the failure is reported and no autograder results are given.
-3. A grading summary is generated from the results of the tests run. This is what the students see on Pawtograder under "Grading Summary" for a submission.
-4. The environment is cleaned up for the next submission.
-5. The `submissionFiles` are listed in the "Files" section of the student's results on Pawtograder.
+3. A grading summary is generated from the results of the tests run. This summary is organized according the the `gradedParts` collection and reported to the students in their submission.
+s4. The `submissionFiles` are listed in the "Files" section of the student's results on Pawtograder.
+5. The environment is cleaned up for the next invocation of the autograder.
 
 What follows is a description of the various properties of the "overlay grader" in the `pawtograder.yml` file.
 
-# Build config
+# Build configuration
 
-The `build` property has a number of sub-properties. To run, only `preset` is required.
+The `build` property describes what the autograder will do for each submission. Below are all of the sub-properties that can be set to configure the autograder itself. However, only `preset` is truly required.
 
 - `preset`: choose one of the available build presets. Currently, there are three presets:
   - `java-gradle` for building Java projects that use Gradle
@@ -55,7 +55,7 @@ The `build` property has a number of sub-properties. To run, only `preset` is re
 
 # Graded parts
 
-The property `gradedParts` is an array of items. Each item is made of two required sub-properties.
+The `gradedParts` property describes what tests will be reported and how many points they are worth in the assignment. The value of this property is an array of items. Each item is made of two required sub-properties.
 
 - `name`: the name of the graded part
 - `gradedUnits`: an array of the specific units that make up a graded parts
@@ -64,7 +64,7 @@ There is also an optional property for displaying the results in a submission.
 
 - `hide_until_released`: a boolean for whether this part's scores and tests are visible to students only when released. By default, this is false, meaning the graded part and its units are visible throughout the assignment lifetime.
 
-The `gradedUnits` are made of items called _units_. Each unit either be regular testing units like JUnit tests or they can be mutation test units. These unit types can both be used in the same graded part if desired.
+The `gradedUnits` are made of items called _units_. Each unit can either be regular graded units like JUnit tests or they can be mutation test units. These unit types can both be used in the same graded part if desired.
 
 - Regular graded units are composed of 5 properties:
   - `name`: a name for the graded unit
@@ -82,7 +82,7 @@ The `gradedUnits` are made of items called _units_. Each unit either be regular 
 
 # Submission files
 
-In this section, you declare the files that are accepted by Pawtograder for manual grading and testing. These are split into two necessary sub-fields: `files` and `testFiles`.
+The `submissionFiles` property describes the files that are accepted by Pawtograder for manual grading and testing. These are split into two necessary sub-fields: `files` and `testFiles`.
 
 - `file`_ are the source code and any auxiliary files you want to either automatically grade or manually grade.
 - `test_files` are the locations of test files you want to either autograder, report about, or manually grade.
