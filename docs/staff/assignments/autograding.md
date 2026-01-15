@@ -18,7 +18,7 @@ What follows is a description of the various properties of the "overlay grader" 
 
 # Build configuration
 
-The `build` property describes what the autograder will do for each submission. Below are all of the sub-properties that can be set to configure the autograder itself. However, only `preset` is truly required.
+The `build` property describes what the autograder will do for each submission. Below are all of the sub-properties that can be set to configure the autograder itself. However, only `preset` is required.
 
 - `preset`: choose one of the available build presets. Currently, there are three presets:
   - `java-gradle` for building Java projects that use Gradle
