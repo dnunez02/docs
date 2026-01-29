@@ -97,7 +97,7 @@ The template repository, which is cloned into student repositories, contains a G
 
 Both you and students can see each job executed in the Actions section of GitHub for more detailed information in the event of a failure.
 
-When a student pushes their code to GitHub on the branches specified in `grade.yml`, the grading job activates and proceeds through each of the steps. By default, there are three steps performed
+When a student pushes their code to GitHub on the branches specified in `grade.yml`, the grading job activates and proceeds through each of the steps. By default, there are three steps performed.
 
 1. "Checkout", which checks out the student's code onto the image.
 2. The steps for installing dependencies. You should have either uncommented the default dependency steps or added your own.
@@ -318,10 +318,10 @@ submissionFiles:
 
 Next we look at the `build.gradle` file. Unlike the prior Java example, we need to edit the build.gradle file to incorporate the mutation testing library. In brief
 
-1. The `plugins` section need to know the name of the mutation testing library, pitest, and its version.
+1. The `plugins` section needs the name of the mutation testing library, pitest, and its version.
 2. A `pitest` section is added to configure the mutation testing. You can find more on how to configure this on the [README for the Gradle plugin for PiTest](https://github.com/szpak/gradle-pitest-plugin).
 
-```yaml
+```gradle
 plugins {
     id 'java'
     id 'application'
